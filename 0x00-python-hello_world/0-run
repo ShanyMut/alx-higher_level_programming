@@ -1,2 +1,19 @@
 #!/bin/bash
-python3 $PYFILE
+
+# This script runs a Python script specified by the PYFILE environment variable.
+
+# Check if the PYFILE environment variable is set
+if [ -z "$PYFILE" ]; then
+  echo "Error: PYFILE environment variable is not set."
+  echo "Please set PYFILE to the name of your Python script."
+  exit 1
+fi
+
+# Check if the specified Python file exists
+if [ ! -f "$PYFILE" ]; then
+  echo "Error: Python file '$PYFILE' not found."
+  exit 1
+fi
+
+# Execute the Python script
+python3 "$PYFILE"
